@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Modern Music Player</title>
+</head>
+
+<body>
+  <div class="music-player-container">
+    <div class="player-header">
+      <div class="player-title">Now Playing</div>
+      <button class="playlist-button">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path
+            d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15">
+          </path>
+          <path d="M7 10L12 15L17 10"></path>
+          <path d="M12 15V3"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="album-art ">
+      <img src="https://picsum.photos/200/300" alt="Album Cover" />
+    </div>
+
+    <div class="favorite-container">
+      <button class="favorite-button">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+          </path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="song-info">
+      <div class="song-title">Blinding Lights</div>
+      <div class="artist-name">The Weekend</div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress"></div>
+        <div class="progress-dot"></div>
+      </div>
+      <div class="time-stamps">
+        <div class="current-time">0:00</div>
+        <div class="total-time">0:00</div>
+      </div>
+    </div>
+
+    <audio src="./music/music01.mp3 "></audio>
+
+
+    <div class="player-controls">
+      <button class="control-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24">
+          <path d="M19 4l-7 8 7 8V4zM12 4l-7 8 7 8V4z"></path>
+        </svg>
+      </button>
+      <button class="control-button prev">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M19 20L9 12l10-8v16z"></path>
+        </svg>
+      </button>
+      <button class="control-button play-pause">
+        <svg class="icon playIcn" viewBox="0 0 24 24">
+          <path d="M5 3l14 9-14 9V3z"></path>
+        </svg>
+        <svg class="icon pauseIcn" viewBox="0 0 24 24">
+          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"></path>
+        </svg>
+      </button>
+      <button class="control-button next">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M5 4l10 8-10 8V4z"></path>
+        </svg>
+      </button>
+      <button class="control-button">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M5 4l7 8-7 8V4zM12 4l7 8-7 8V4z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="playlist-container">
+      <div class="playlist-title">Playlist</div>
+      <div class="playlist-item active">
+        <div class="playlist-item-thumbnail">
+          <img src="https://picsum.photos/200/300" alt="Track 1" />
+        </div>
+        <div class="playlist-item-info">
+          <div class="playlist-item-title">Blinding Lights</div>
+          <div class="playlist-item-artist">The Weekend</div>
+        </div>
+        <div class="active-indicator">
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+        </div>
+      </div>
+      <div class="playlist-item">
+        <div class="playlist-item-thumbnail">
+          <img src="https://picsum.photos/200/300" alt="Track 2" />
+        </div>
+        <div class="playlist-item-info">
+          <div class="playlist-item-title">Save Your Tears</div>
+          <div class="playlist-item-artist">The Weekend</div>
+        </div>
+      </div>
+      <div class="playlist-item">
+        <div class="playlist-item-thumbnail">
+          <img src="https://picsum.photos/200/300" alt="Track 3" />
+        </div>
+        <div class="playlist-item-info">
+          <div class="playlist-item-title">Starboy</div>
+          <div class="playlist-item-artist">The Weekend ft. Daft Punk</div>
+        </div>
+      </div>
+      <div class="playlist-item">
+        <div class="playlist-item-thumbnail">
+          <img src="https://picsum.photos/200/3000" alt="Track 4" />
+        </div>
+        <div class="playlist-item-info">
+          <div class="playlist-item-title">Take My Breath</div>
+          <div class="playlist-item-artist">The Weekend</div>
+        </div>
+      </div>
+      <div class="playlist-item">
+        <div class="playlist-item-thumbnail">
+          <img src="https://picsum.photos/200/300" alt="Track 5" />
+        </div>
+        <div class="playlist-item-info">
+          <div class="playlist-item-title">Die For You</div>
+          <div class="playlist-item-artist">The Weekend</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="demo.js"></script>
+</body>
+
+</html>
