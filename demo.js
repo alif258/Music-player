@@ -9,12 +9,11 @@ const prevBtn = document.querySelector(".prev")
 const nextBtn = document.querySelector(".next")
 const musicCurrentTime = document.querySelector(".current-time")
 const musicTotalTime = document.querySelector(".total-time")
+const musicProgressBar = document.querySelector(".progress-bar")
 const musicProgress = document.querySelector(".progress")
 const musicProgressDot = document.querySelector(".progress-dot")
 
 
-
-console.log(prevBtn, nextBtn);
 
 
 let songs = [
@@ -64,7 +63,6 @@ function playMusic() {
      updatePlayPauseIcn()
 }
 
-
 function pauseMusic() {
      isPlaying = false
      music.pause()
@@ -72,15 +70,11 @@ function pauseMusic() {
 
 }
 
-
-
-
 function updatePlayPauseIcn() {
      playIcn.style.display = isPlaying ? "none" : "block"
      pauseIcn.style.display = isPlaying ? "block" : "none"
      albumArtAnimation.classList.toggle("rotate-animation")
 }
-
 
 playBtn.addEventListener("click", () => isPlaying ? pauseMusic() : playMusic())
 
@@ -96,9 +90,7 @@ function musicDetailsUpdate(songs) {
      music.src = songs.src
 }
 
-
 musicDetailsUpdate(songs[songNumber])
-
 
 prevBtn.addEventListener("click", () => {
      songNumber = (songNumber - 1 + songs.length) % songs.length
@@ -132,20 +124,36 @@ music.addEventListener("timeupdate", (e) => {
           musicTotalTime.textContent = `${totalTimeInMin}:${totalTimeInSec}`
      }
 
-
-
-    musicProgressCal = (currentTime/duration)*100
+     musicProgressCal = (currentTime / duration) * 100
      musicProgress.style.width = `${musicProgressCal}%`
      musicProgressDot.style.left = `${musicProgressCal}%`
 
 })
 
-
-
 function musicTimeFormatter(sec, op) {
      if (op == "/") {
           return Math.floor(sec / 60)
      } else if (op == "%") {
-          return Math.floor(sec % 60).toString().padStart(2,"0")
+          return Math.floor(sec % 60).toString().padStart(2, "0")
      }
 }
+
+
+
+
+
+
+musicProgressBar.addEventListener("click", (e) => {
+     const { offsetX } = e
+     if (e.target==e.currentTarget) {
+          const { clientWidth } = e.target
+          musicProgressCal = (offsetX / clientWidth) * 100
+          musicProgress.style.width = `${musicProgressCal}%`
+          musicProgressDot.style.left = `${musicProgressCal}%`
+     }else{
+          const { clientWidth } = e.target.offsetParent
+          musicProgressCal = (offsetX / clientWidth) * 100
+          musicProgress.style.width = `${musicProgressCal}%`
+          musicProgressDot.style.left = `${musicProgressCal}%`
+     }
+})
