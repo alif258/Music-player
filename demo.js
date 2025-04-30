@@ -73,7 +73,11 @@ function pauseMusic() {
 function updatePlayPauseIcn() {
      playIcn.style.display = isPlaying ? "none" : "block"
      pauseIcn.style.display = isPlaying ? "block" : "none"
-     albumArtAnimation.classList.toggle("rotate-animation")
+     if (isPlaying) {
+          albumArtAnimation.classList.add("rotate-animation")
+     } else {
+          albumArtAnimation.classList.remove("rotate-animation")
+     }
 }
 
 playBtn.addEventListener("click", () => isPlaying ? pauseMusic() : playMusic())
@@ -143,17 +147,35 @@ function musicTimeFormatter(sec, op) {
 
 
 
+// musicProgressBar.addEventListener("click", (e) => {
+//      const { offsetX } = e
+//      if (e.target == e.currentTarget) {
+//           const { clientWidth } = e.target
+//           musicProgressCal = (offsetX / clientWidth) * 100
+//           musicProgress.style.width = `${musicProgressCal}%`
+//           musicProgressDot.style.left = `${musicProgressCal}%`
+//      } else {
+//           const { clientWidth } = e.target.offsetParent
+//           musicProgressCal = (offsetX / clientWidth) * 100
+//           musicProgress.style.width = `${musicProgressCal}%`
+//           musicProgressDot.style.left = `${musicProgressCal}%`
+//      }
+     
+ 
+// })
+
+
 musicProgressBar.addEventListener("click", (e) => {
-     const { offsetX } = e
-     if (e.target==e.currentTarget) {
-          const { clientWidth } = e.target
-          musicProgressCal = (offsetX / clientWidth) * 100
-          musicProgress.style.width = `${musicProgressCal}%`
-          musicProgressDot.style.left = `${musicProgressCal}%`
-     }else{
-          const { clientWidth } = e.target.offsetParent
-          musicProgressCal = (offsetX / clientWidth) * 100
-          musicProgress.style.width = `${musicProgressCal}%`
-          musicProgressDot.style.left = `${musicProgressCal}%`
-     }
-})
+     const offsetX = e.offsetX;
+     const clientWidth = musicProgressBar.clientWidth;
+
+     const clickedPercentage = offsetX / clientWidth;
+     const newTime = clickedPercentage * music.duration;
+
+     music.currentTime = newTime;
+
+     musicProgressCal = clickedPercentage * 100;
+     musicProgress.style.width = `${musicProgressCal}%`;
+     musicProgressDot.style.left = `${musicProgressCal}%`;
+
+});
